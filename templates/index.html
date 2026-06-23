@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Vital System</title>
+</head>
+<body>
+    <h1>AI Patient Monitoring Dashboard</h1>
+
+    <button onclick="getVitals()">Get Vitals</button>
+
+    <pre id="output"></pre>
+
+    <script>
+        function getVitals() {
+            fetch("/vitals")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("output").innerText =
+                    "Heart Rate: " + data.heart_rate + "\n" +
+                    "SpO2: " + data.spo2 + "\n" +
+                    "BP: " + data.bp + "\n" +
+                    "Status: " + data.status;
+            });
+        }
+    </script>
+</body>
+</html>
